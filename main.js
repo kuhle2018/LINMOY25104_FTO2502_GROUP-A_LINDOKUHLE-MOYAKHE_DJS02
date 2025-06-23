@@ -77,3 +77,81 @@ if (genreFilter) {
     }
   });
 }
+
+// Modal logic
+const modalContainer = document.getElementById('podcast-modal');
+
+function closeModal() {
+  modalContainer.style.display = 'none';
+  modalContainer.innerHTML = '';
+}
+
+function openModal(podcast) {
+  // Find genres and seasons
+  const genreNames = (podcast.genres || [])
+    .map(id => {
+      const genre = genres.find(g => g.id === id || g.id === Number(id));
+      return genre ? `<span class="genre">${genre.title}</span>` : '';
+    })
+    .join('');
+  const seasonData = (seasons.find(s => s.id == podcast.id) || {}).seasonDetails || [];
+
+  // Format date
+  const updatedDate = new Date(podcast.updated);
+  const updatedText = updatedDate.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+
+  // Build modal HTML
+  modalContainer.innerHTML = `
+    <div class="modal" style="display:flex;">
+      <div class="modal-content">
+        <span class="close" id="modal-close">&times;</span>
+        <div class="modal-body">
+          <div class="modal-header">
+            <div class="modal-cover">
+              ${podcast.image
+                ? `<img src="${podcast.image}" alt="Cover for ${podcast.title}">`
+                : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">Large Cover Image</div>`
+              }
+            </div>
+            <div>
+              <h2>${podcast.title}</h2>
+              <div>${podcast.description || ''}</div>
+              <div class="modal-genres">${genreNames}</div>
+              <div class="modal-updated"><span style="margin-right:0.5rem;">📅</span>Last updated: ${updatedText}</div>
+            </div>
+          </div>
+          <h3>Seasons</h3>
+          <div id="modal-seasons">
+            ${
+              seasonData.length
+                ? seasonData.map(s =>
+                    `<div class="season-card">
+                      <div class="season-info">
+                        <div class="season-title">${s.title}</div>
+                        <div class="season-desc">${s.description || ''}</div>
+                      </div>
+                      <div class="season-episodes">${s.episodes} episode${s.episodes > 1 ? 's' : ''}</div>
+                    </div>`
+                  ).join('')
+                : '<div>No seasons available.</div>'
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+  modalContainer.style.display = 'flex';
+
+  // Close modal events
+  document.getElementById('modal-close').onclick = closeModal;
+  modalContainer.onclick = (e) => {
+    if (e.target === modalContainer) closeModal();
+  };
+}
+
+// Listen for podcast card click
+document.getElementById('podcast-list').addEventListener('podcast-selected', (e) => {
+  const title = e.target.getAttribute('title');
+  const podcast = podcasts.find(p => p.title === title);
+  if (podcast) openModal(podcast);
+});
