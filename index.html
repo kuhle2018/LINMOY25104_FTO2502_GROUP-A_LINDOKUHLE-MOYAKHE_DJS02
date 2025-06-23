@@ -3,10 +3,47 @@
 <head>
   <meta charset="UTF-8" />
   <title>Podcast Preview Component</title>
+  <link rel="stylesheet" href="styles.css">
   <script type="module" src="./main.js"></script>
 </head>
 <body>
-  <h1>Podcast Previews</h1>
+  <header>
+    <div class="logo">🎙️ PodcastApp</div>
+    <div class="actions">
+    <input type="search" placeholder="🔍Search..." />
+    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" class="avatar" />
+    </div>
+  </header>
+  <div class="filters">
+    <label for="genre-filter">Filter by:</label>
+    <select id="genre-filter">
+    <option>All Genres</option>
+    <option>Comedy</option>
+    <option>News</option>
+    <option>Sports</option>
+    <option>Music</option>
+    <option>Technology</option>
+    <option>Business</option>
+    <option>Education</option>
+    <option>Health</option>
+    <option>True Crime</option>
+    <option>Society & Culture</option>
+    <option>History</option>
+    <option>Kids & Family</option>
+    <option>Science</option>
+    <option>TV & Film</option>
+    <!-- recently updated -->
+    </select>
+    <select id="sort-filter">
+    <option>Recently Updated</option>
+    <option>Most Seasons</option>
+    <option>Newest</option>
+    <option>Oldest</option>
+    <option>A-Z</option>
+    <option>Z-A</option>
+    <!-- modal -->
+    </select>
+  </div>
   <section id="podcast-list"></section>
 </body>
 </html>
