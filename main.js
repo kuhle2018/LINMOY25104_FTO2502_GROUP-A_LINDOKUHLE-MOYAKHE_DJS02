@@ -60,6 +60,20 @@ function renderPodcasts(filteredPodcasts = podcasts) {
   });
 }
 
+const searchInput = document.getElementById('search-input');
+
+if (searchInput) {
+  searchInput.addEventListener('input', (e) => {
+    const query = e.target.value.trim().toLowerCase();
+    const filtered = podcasts.filter(podcast =>
+      podcast.title.toLowerCase().includes(query) ||
+      (podcast.description && podcast.description.toLowerCase().includes(query))
+    );
+    renderPodcasts(filtered);
+  });
+}
+
+
 // Initial render
 renderPodcasts();
 
