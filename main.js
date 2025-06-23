@@ -1,4 +1,4 @@
-import { podcasts, genres } from './data.js';
+import { podcasts, genres, seasons } from './data.js';
 import './components/PodcastPreview.js';
 
 // Dynamically populate the genre filter dropdown
