@@ -135,36 +135,38 @@ function openModal(podcast) {
 <span class="close" id="modal-close">&times;</span>
 <div class="modal-body">
 <div class="modal-header">
-<div class="modal-cover">
-${podcast.image
-? `<img src="${podcast.image}" alt="Cover for ${podcast.title}">`
-: `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">Large Cover Image</div>`
-}
-</div>
-<div>
-<h2>${podcast.title}</h2>
-<div>${podcast.description || ''}</div>
-<div class="modal-genres">${genreNames}</div>
-<div class="modal-updated"><span style="margin-right:0.5rem;">📅</span>Last updated: ${updatedText}</div>
-</div>
-</div>
-<h3>Seasons</h3>
-<div id="modal-seasons">
-${
-seasonData.length
-? seasonData.map(s =>
- `<div class="season-card">
-<div class="season-info">
-<div class="season-title">${s.title}</div>
-<div class="season-desc">${s.description || ''}</div>
-</div>
-<div class="season-episodes">${s.episodes} episode${s.episodes > 1 ? 's' : ''}</div>
-</div>`
-).join('')
-: '<div>No seasons available.</div>'
-}
-</div>
-</div>
+  <div class="modal-cover">
+    ${podcast.image
+      ? `<img src="${podcast.image}" alt="Cover for ${podcast.title}">`
+      : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">Large Cover Image</div>`
+    }
+  </div>
+  <div class="modal-info">
+  <h2>${podcast.title}</h2>
+  <div class="modal-description">${podcast.description || ''}</div>
+  <div class="genres-list">${genreNames}</div>
+  <div class="modal-updated"><span style="margin-right: 0.5rem;">📅</span>Last updated: ${updatedText}</div>
+
+  <div class="modal-seasons">
+    <h3>Seasons</h3>
+    <div class="season-list">
+      ${
+        seasonData.length
+          ? seasonData.map(s => `
+              <div class="season-row">
+                <div>
+                  <div class="season-title">${s.title}</div>
+                  <div class="season-desc">${s.description || ''}</div>
+                </div>
+                <div class="season-episodes">
+                  ${s.episodes} episode${s.episodes > 1 ? 's' : ''}
+                </div>
+              </div>
+            `).join('')
+          : '<div>No seasons available.</div>'
+      }
+    </div>
+  </div>
 </div>
 </div>
 `;

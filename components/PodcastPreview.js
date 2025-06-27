@@ -16,11 +16,18 @@ class PodcastPreview extends HTMLElement {
     this.render();
     this.shadowRoot.querySelector('.preview').addEventListener('click', () => {
       this.dispatchEvent(new CustomEvent('podcast-selected', {
-        bubbles: true,
+      bubbles: true,
+      composed: true, 
         detail: { title: this.getAttribute('title') }
       }));
     });
-  }
+    
+}
+
+disconnectedCallback() {
+ 
+}
+
 
   render() {
     const cover = this.getAttribute('cover') || '';
@@ -113,12 +120,21 @@ class PodcastPreview extends HTMLElement {
           font-size: 0.92rem;
           color: #888;
         }
-        @media (max-width: 700px) {
-          .preview {
-            max-width: 100%;
-            min-height: 0;
-          }
-        }
+  @media (max-width: 700px) {
+  .preview {
+  max-width: 100%;
+  width: 100%;
+  min-width: 0;
+  padding: 0.7rem 0.1rem 1.2rem 0.1rem;
+  min-height: 0;
+  box-sizing: border-box;
+  }
+  .cover {
+min-height: 140px;
+max-height: 220px;
+border-radius: 10px;
+  }
+}
       </style>
       <div class="preview" tabindex="0">
         ${

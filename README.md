@@ -92,17 +92,12 @@ document.getElementById('podcast-list').addEventListener('podcast-selected', (e)
 - data.js – Podcast, genre, and season data
 - styles.css – App and component styles
 
----
+- ## Author
+-Created by Lindokuhle Moyakhe
 
-## Author
-
-Created by Lindokuhle Moyakhe
-
-- "https://www.facebook.com/lindokuhle.moyakhe" target="_blank" aria-label="Facebook">
-"https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/facebook.svg" alt="facebook" height='30' /></"https://github.com/kuhle2018" target="_blank" aria-label="Github">
-"https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/github.svg" alt="github" height='30' /></a>
-"https://www.linkedin.com/in/lindokuhle-moyakhe-60366125/" target="_blank" aria-label="linkedin">
-"https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg" alt="linkedin" height='30' >
+- [![Facebook](https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/facebook.svg)](https://www.facebook.com/lindokuhle.moyakhe)
+- [![Github](https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/github.svg)](https://github.com/kuhle2018)
+-[![LinkedIn](https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg)](https://www.linkedin.com/in/lindokuhle-moyakhe-60366125/)
 
 ---
 
